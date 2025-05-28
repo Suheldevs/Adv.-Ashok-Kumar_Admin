@@ -46,8 +46,8 @@ const GalleryModal = ({ isOpen, onClose, onSubmit, formData, setFormData, upload
             disabled={formData.imageUrl && formData.imageUrl !== ""} 
           />
   
-          <button disabled={loading} onClick={onSubmit} className="bg-blue-600 text-white px-4 py-2 rounded w-full">
-            {formData._id ? "Update" : "Add"} Image
+          <button disabled={loading} onClick={onSubmit} className={`${loading ? "cursor-not-allowed" : " cursor-pointer"} bg-blue-600 text-white px-4 py-2 rounded w-full`}>
+            {loading && 'Uploading..'} { formData._id ? "Update" : "Add"} Image
           </button>
           
           <button onClick={onClose} className="mt-2 bg-gray-600 text-white px-4 py-2 rounded w-full">
@@ -100,6 +100,7 @@ const GalleryDashboard = () => {
     uploadData.append("folder", "ashok_kumar/gallery");
 
     try {
+      setLoading(true)
       const response = await axios.post(
         `https://api.cloudinary.com/v1_1/diz0v7rws/image/upload`,
         uploadData
@@ -196,8 +197,8 @@ const GalleryDashboard = () => {
           <div key={item._id} className="bg-white p-4 shadow rounded relative">
             <img src={item.imageUrl} alt="Gallery" className="w-full h-52 object-cover rounded" />
             <p className="text-sm mt-2">Posted by: <strong>{item.postedBy}</strong></p>
-            <button onClick={() => handleUpdate(item)} className="absolute top-2 left-2 bg-blue-600 text-white text-xs px-4 py-2 rounded">
-              Update
+            <button disabled={loading} onClick={() => handleUpdate(item)} className="absolute top-2 left-2 bg-blue-600 text-white text-xs px-4 py-2 rounded">
+              Update 
             </button>
 
             <button onClick={() => handleDelete(item._id)} className="absolute top-2 right-2 bg-red-600 text-white text-xs px-4 py-2 rounded">

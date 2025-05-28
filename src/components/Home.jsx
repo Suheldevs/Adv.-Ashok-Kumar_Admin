@@ -38,34 +38,34 @@ const Home = () => {
 
   return (
     <>
-      {/* <h1 className="text-3xl font-semibold text-center text-gray-900 mb-4">Hello Admin</h1> */}
-      <div className="bg-gray-50   py-6 px-4 sm:px-6 lg:px-8">
+      {/* <h1 className="text-3xl font-semibold text-center text-neutral-900 mb-4">Hello Admin</h1> */}
+      <div className="bg-neutral-50   py-6 px-4 sm:px-6 lg:px-8">
         <div className="">
           {/* Greeting */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="relative   flex justify-around items-center border-b-4 border-slate-950 bg-white shadow-xl px-6 py-4  rounded-xl transition-transform hover:scale-105">
+            <div className="relative   flex justify-around items-center border-b-4 border-neutral-950 bg-white shadow-xl px-6 py-4  rounded-xl transition-transform hover:scale-105">
               
             <div className="absolute inset-0 "  style={{background:`url(${bg})`,backgroundPosition:'center',opacity:0.2,}} >
 
 </div>
               {/* Icon */}
-              <div className="p-3 bg-slate-950 shadow-2xl   rounded-xl">
+              <div className="p-3 bg-neutral-950 shadow-2xl   rounded-xl">
                 <MailQuestion size={40} className="text-white" />
               </div>
 
               {/* Content */}
-              <div className="flex flex-col text-slate-900">
+              <div className="flex flex-col text-neutral-900">
                 <h2 className="text-lg font-semibold tracking-wide">
                   Total Inquiries
                 </h2>
-                <p className="text-4xl font-bold mt-2 text-slate-950">
+                <p className="text-4xl font-bold mt-2 text-neutral-950">
                   {inquiryCount}
                 </p>
               </div>
             </div>
 
-            <div className="relative   flex justify-around items-center bg-white border-b-4 border-slate-950 shadow-xl px-6 py-4 rounded-xl transition-transform hover:scale-105"
+            <div className="relative   flex justify-around items-center bg-white border-b-4 border-neutral-950 shadow-xl px-6 py-4 rounded-xl transition-transform hover:scale-105"
             
            
             >
@@ -75,37 +75,37 @@ const Home = () => {
               
               
               {/* Icon */}
-              <div className="p-3 bg-slate-950 shadow-2xl   rounded-xl">
+              <div className="p-3 bg-neutral-950 shadow-2xl   rounded-xl">
                 <FolderOpenDot size={40} className="text-white" />
               </div>
 
               {/* Content */}
-              <div className="flex flex-col text-slate-900">
+              <div className="flex flex-col text-neutral-900">
                 <h2 className="text-lg font-semibold tracking-wide">
                   Total Gallery Images
                 </h2>
-                <p className="text-4xl font-bold mt-2 text-slate-950">
+                <p className="text-4xl font-bold mt-2 text-neutral-950">
                   {caseCount}
                 </p>
               </div>
             </div>
 
-            <div className="relative   flex justify-around items-center bg-white border-b-4 border-slate-950 shadow-xl px-6 py-4 rounded-xl transition-transform hover:scale-105">
+            <div className="relative   flex justify-around items-center bg-white border-b-4 border-neutral-950 shadow-xl px-6 py-4 rounded-xl transition-transform hover:scale-105">
             <div className="absolute inset-0 "  style={{background:`url(${bg})`,backgroundPosition:'center',opacity:0.2,}} >
 
 </div>
               
               {/* Icon */}
-              <div className="p-3 bg-slate-950 shadow-2xl   rounded-xl">
+              <div className="p-3 bg-neutral-950 shadow-2xl   rounded-xl">
                 <Rss size={40} className="text-white" />
               </div>
 
               {/* Content */}
-              <div className="flex flex-col text-slate-900">
+              <div className="flex flex-col text-neutral-900">
                 <h2 className="text-lg font-semibold tracking-wide">
                   Total Blogs
                 </h2>
-                <p className="text-4xl font-bold mt-2 text-slate-950">
+                <p className="text-4xl font-bold mt-2 text-neutral-950">
                   {blogCount}
                 </p>
               </div>
