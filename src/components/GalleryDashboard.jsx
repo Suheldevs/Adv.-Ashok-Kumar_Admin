@@ -2,62 +2,107 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { validateImage } from "./imagevalidation";
+import { Edit2, Plus, Trash2 } from "lucide-react";
 
-const GalleryModal = ({ isOpen, onClose, onSubmit, formData, setFormData, uploadImage ,loading}) => {
+const GalleryModal = ({ isOpen, onClose, onSubmit, formData, setFormData, uploadImage, loading }) => {
     if (!isOpen) return null;
   
     return (
       <div
-        className="fixed inset-0 bg-black/50 flex justify-center items-center"
-        onClick={onClose} // Close modal when clicking outside
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 p-4"
+        onClick={onClose}
       >
         <div
-          className="bg-white p-6 rounded shadow-lg w-full sm:w-96"
-          onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside modal
+          className="bg-white rounded-md shadow-2xl w-full max-w-md transform transition-all duration-300 scale-100"
+          onClick={(e) => e.stopPropagation()}
         >
-          <h2 className="text-xl font-bold mb-4">{formData._id ? "Update Image" : "Add Image"}</h2>
+          {/* Modal Header */}
+          <div className="bg-gradient-to-r from-amber-600 to-amber-600 text-white p-6 rounded-t-2xl">
+            <h2 className="text-2xl font-bold">
+              {formData._id ? "Update Image" : "Add New Image"}
+            </h2>
+          </div>
           
-          {/* Preview Image if exists */}
-          {formData.imageUrl && (
-            <div className="mb-3">
-              <img src={formData.imageUrl} alt="Preview" className="w-full h-40 object-cover rounded" />
-              <button
-              disabled={loading}
-                className="mt-2 bg-red-600 text-white px-4 py-1 rounded w-full"
-                onClick={() => setFormData({ ...formData, imageUrl: "" })} // Remove image
+          <div className="p-6 space-y-6">
+            {/* Preview Image */}
+            {formData.imageUrl && (
+              <div className="relative group">
+                <div className="relative overflow-hidden rounded-xl border-2 border-gray-200">
+                  <img 
+                    src={formData.imageUrl} 
+                    alt="Preview" 
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" 
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                </div>
+                <button
+                  disabled={loading}
+                  className="mt-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-2 rounded-lg w-full font-medium transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={() => setFormData({ ...formData, imageUrl: "" })}
+                >
+                  Remove Image
+                </button>
+              </div>
+            )}
+  
+            {/* Form Fields */}
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Posted By
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter your name..."
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all duration-300 outline-none"
+                  value={formData.postedBy}
+                  onChange={(e) => setFormData({ ...formData, postedBy: e.target.value })}
+                />
+              </div>
+  
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Select Image
+                </label>
+                <div className="relative">
+                  <input 
+                    type="file" 
+                    className="w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all duration-300 outline-none file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100 disabled:opacity-50 disabled:cursor-not-allowed" 
+                    onChange={uploadImage} 
+                    disabled={formData.imageUrl && formData.imageUrl !== ""} 
+                    accept="image/*"
+                  />
+                </div>
+              </div>
+            </div>
+  
+            {/* Action Buttons */}
+            <div className="flex flex-col space-y-3 pt-4">
+              <button 
+                disabled={loading} 
+                onClick={onSubmit} 
+                className={`${loading ? "cursor-not-allowed opacity-75" : "cursor-pointer hover:shadow-lg"} bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-[1.02] disabled:transform-none flex items-center justify-center space-x-2`}
               >
-                Remove Image
+                {loading && (
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                )}
+                <span>
+                  {loading ? 'Uploading...' : formData._id ? "Update Image" : "Add Image"}
+                </span>
+              </button>
+              
+              <button 
+                onClick={onClose} 
+                className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-[1.02]"
+              >
+                ✕ Cancel
               </button>
             </div>
-          )}
-  
-          <input
-            type="text"
-            placeholder="Posted By"
-            className="border p-2 w-full mb-2"
-            value={formData.postedBy}
-            onChange={(e) => setFormData({ ...formData, postedBy: e.target.value })}
-          />
-  
-          <input 
-            type="file" 
-            className="border p-2 w-full mb-2" 
-            onChange={uploadImage} 
-            disabled={formData.imageUrl && formData.imageUrl !== ""} 
-          />
-  
-          <button disabled={loading} onClick={onSubmit} className={`${loading ? "cursor-not-allowed" : " cursor-pointer"} bg-blue-600 text-white px-4 py-2 rounded w-full`}>
-            {loading && 'Uploading..'} { formData._id ? "Update" : "Add"} Image
-          </button>
-          
-          <button onClick={onClose} className="mt-2 bg-gray-600 text-white px-4 py-2 rounded w-full">
-            Cancel
-          </button>
+          </div>
         </div>
       </div>
     );
-  };
-  
+};
 
 const GalleryDashboard = () => {
   const [gallery, setGallery] = useState([]);
@@ -83,11 +128,11 @@ const GalleryDashboard = () => {
   const uploadImage = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
- const validation = validateImage(file);
-     if (!validation.valid) {
-       Swal.fire("Error", validation.message, "error");
-       return;
-     }
+    const validation = validateImage(file);
+    if (!validation.valid) {
+      Swal.fire("Error", validation.message, "error");
+      return;
+    }
     if (!file.type.startsWith("image/")) {
       Swal.fire("Error", "Please select a valid image file!", "error");
       return;
@@ -129,7 +174,6 @@ const GalleryDashboard = () => {
         await axios.put(`${api}/gallery/update/${formData._id}`, formData);
         Swal.fire("Success", "Image updated successfully!", "success");
       } else {
-        // Add new image
         await axios.post(`${api}/gallery/save`, formData);
         Swal.fire("Success", "Image added to gallery!", "success");
       }
@@ -143,7 +187,6 @@ const GalleryDashboard = () => {
     }
     fetchGallery();
   };
-  
 
   const handleDelete = async (id) => {
     Swal.fire({
@@ -184,29 +227,86 @@ const GalleryDashboard = () => {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold ">Gallery Dashboard</h1>
-      <div className="text-right">
-      <button onClick={() => setShowModal(true)} className="mb-4  bg-blue-600 text-white px-4 py-2 rounded">
-        Add New Image
-      </button>
-      </div>
-      <div className="grid bg-gray-100 p-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {gallery?.length == 0 && (<div className="text-red-500 text-2xl text-center">No Data Yet!</div>)}
-        {gallery.map((item) => (
-          <div key={item._id} className="bg-white p-4 shadow rounded relative">
-            <img src={item.imageUrl} alt="Gallery" className="w-full h-52 object-cover rounded" />
-            <p className="text-sm mt-2">Posted by: <strong>{item.postedBy}</strong></p>
-            <button disabled={loading} onClick={() => handleUpdate(item)} className="absolute top-2 left-2 bg-blue-600 text-white text-xs px-4 py-2 rounded">
-              Update 
-            </button>
-
-            <button onClick={() => handleDelete(item._id)} className="absolute top-2 right-2 bg-red-600 text-white text-xs px-4 py-2 rounded">
-              Delete
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-amber-50">
+      {/* Header Section */}
+      <div className="bg-white shadow-lg border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
+            <div>
+              <h1 className="text-3xl font-bold  ">
+                Gallery Dashboard
+              </h1>
+              <p className="text-gray-600 mt-2">Manage your beautiful image collection</p>
+            </div>
+            <button 
+              onClick={() => setShowModal(true)} 
+              className="bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 text-white px-4 py-2 rounded-md font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+            >
+              <span><Plus/></span>
+              <span>Add New Image</span>
             </button>
           </div>
-        ))}
+        </div>
       </div>
+
+      {/* Gallery Grid Section */}
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        {gallery?.length === 0 ? (
+          <div className="text-center py-20">
+            <div className="text-8xl mb-4">📷</div>
+            <h3 className="text-2xl font-bold text-gray-400 mb-2">No Images Yet!</h3>
+            <p className="text-gray-500">Start building your gallery by adding your first image</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {gallery.map((item) => (
+              <div 
+                key={item._id} 
+                className="group bg-white rounded-sm shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] overflow-hidden border border-gray-100"
+              >
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={item.imageUrl} 
+                    alt="Gallery" 
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Action Buttons */}
+                  <div className="absolute top-3 left-3 right-3 flex justify-between opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <button 
+                      disabled={loading} 
+                      onClick={() => handleUpdate(item)} 
+                      className="bg-white/90 backdrop-blur-sm hover:bg-white text-amber-600 px-3 py-2 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-1 text-sm"
+                    >
+                      <span><Edit2/></span>
+                    </button>
+                    <button 
+                      onClick={() => handleDelete(item._id)} 
+                      className="bg-white/90 backdrop-blur-sm hover:bg-white text-red-600 px-3 py-2 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-1 text-sm"
+                    >
+                      <span><Trash2/></span>
+                    </button>
+                  </div>
+
+                  {/* Image Overlay Info */}
+                  <div className="absolute  bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2">
+                      <p className="text-sm text-gray-700">
+                        <span className="font-medium">Posted by:</span>
+                      </p>
+                      <p className="font-bold text-sm text-gray-900 truncate">{item.postedBy}</p>
+                    </div>
+                  </div>
+                </div>
+
+               
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
       <GalleryModal
         isOpen={showModal}
         onClose={handleCloseModal}

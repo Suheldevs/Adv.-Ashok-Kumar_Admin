@@ -88,7 +88,7 @@ const BlogModal = ({ blogData, onClose }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl mx-4 p-6 max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-md shadow-lg w-full max-w-4xl mx-4 p-6 max-h-[90vh] overflow-y-auto">
         <h2 className="text-2xl font-semibold text-gray-800 text-center mb-4 uppercase">
           {blogData ? "Update" : "Add"} Blog
         </h2>
@@ -140,7 +140,7 @@ const BlogModal = ({ blogData, onClose }) => {
                   disabled={loading}
                   className="w-full p-3 border-2 border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-900"
                 />
-                {loading && <p className="text-blue-500 text-sm">Uploading...</p>}
+                {loading && <p className="text-amber-500 text-sm">Uploading...</p>}
                 
                 {formData.imageUrl && (
                   <div className="mt-2">
@@ -195,7 +195,7 @@ const BlogModal = ({ blogData, onClose }) => {
             <button
               type="submit"
               disabled={loading}
-              className={`bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 ${loading ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
+              className={`bg-amber-600 text-white py-2 px-6 rounded-lg hover:bg-amber-700 ${loading ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
             >
               {blogData ? "Update" : "Save"} Blog
             </button>

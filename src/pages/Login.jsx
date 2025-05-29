@@ -75,7 +75,7 @@ function AdminLogin() {
       
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-center w-full max-w-4xl p-6">
         {/* Left side - Brand info */}
-        <div className="hidden md:flex flex-col items-center md:items-start text-center md:text-left p-8 md:w-1/2">
+        {/* <div className="hidden md:flex flex-col items-center md:items-start text-center md:text-left p-8 md:w-1/2">
           <h1 className="text-4xl font-bold text-amber-800 mb-4">Admin Portal</h1>
           <p className="text-lg text-amber-600 mb-8">Securely access your administration dashboard</p>
           <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg">
@@ -103,7 +103,7 @@ function AdminLogin() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Right side - Login form */}
         <div className="w-full md:w-1/2 max-w-md">

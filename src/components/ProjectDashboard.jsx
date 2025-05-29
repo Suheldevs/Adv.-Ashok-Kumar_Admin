@@ -78,7 +78,7 @@ const ProjectDashboard = () => {
         <h2 className="text-3xl font-bold text-gray-800">Project Dashboard</h2>
         <button
           onClick={handleAdd}
-          className="bg-indigo-600 hover:bg-blue-500 text-white px-5 py-2 rounded-lg shadow-md font-semibold transition-all"
+          className="bg-amber-600 hover:bg-yellow-500 text-white px-5 py-2 rounded-lg shadow-md font-semibold transition-all"
         >
           + Add Project
         </button>

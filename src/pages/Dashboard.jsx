@@ -32,7 +32,7 @@ import ApplicationDashboard from "../components/ApplicationDashboard";
 const SidebarItem = ({ name, icon, active, onClick, collapsed }) => {
   return (
     <div
-      className={`flex items-center ${active ? 'bg-amber-600 text-white' : 'text-neutral-300 hover:bg-neutral-700'} rounded-lg cursor-pointer transition-all duration-200 mb-1 px-3 py-2.5 group`}
+      className={`flex items-center ${active ? 'bg-amber-600 text-white' : 'text-neutral-300 hover:bg-neutral-700'} rounded-lg cursor-pointer transition-all duration-200 mb-0.5 px-2 py-2 group`}
       onClick={() => onClick(name)}
     >
       <div className={`${active ? 'text-white' : 'text-neutral-400 group-hover:text-white'} mr-3 transition-colors`}>{icon}</div>
@@ -132,7 +132,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex h-screen bg-neutral-100">
+    <div className="flex font-sans h-screen bg-neutral-100">
       {/* Overlay for mobile menu */}
       {mobileMenuOpen && (
         <div 
@@ -160,7 +160,7 @@ const Dashboard = () => {
           </div>
           
           {/* Navigation */}
-          <div className="flex-1 px-3 py-4 overflow-y-auto">
+          <div className="flex-1 px-3 py-3 overflow-y-auto">
             <SidebarItem 
               name="Dashboard" 
               icon={<BarChart2 size={20} />} 
@@ -207,12 +207,12 @@ const Dashboard = () => {
           
           {/* Bottom section */}
           {!sidebarCollapsed && (
-            <div className="p-4 border-t border-neutral-800">
+            <div className="py-2 px-4 border-t border-neutral-800">
               <button 
                 onClick={logout}
                 className="flex items-center w-full px-3 py-2 text-neutral-300 rounded-lg hover:bg-neutral-700 hover:text-white transition-colors"
               >
-                <LogOut size={20} className="mr-3" />
+                <LogOut size={20} className="mr-2 rotate-180" />
                 <span>Logout</span>
               </button>
             </div>
@@ -316,7 +316,7 @@ const Dashboard = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white shadow-sm z-10">
+        <header className="bg-white shadow-sm ">
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center md:hidden">
               <button
@@ -328,7 +328,7 @@ const Dashboard = () => {
             </div>
             
             <div className="flex-1 md:ml-4">
-              <h1 className="text-xl font-semibold text-neutral-800">{section}</h1>
+              <h1 className="text-xl font-semibold text-neutral-800">Retd. Judge Ashok Kumar</h1>
             </div>
             
             <div className="flex items-center space-x-4">
@@ -382,7 +382,7 @@ const Dashboard = () => {
                     >
                       <div className="flex items-center">
                         <LogOut size={16} className="mr-2" />
-                        <span>Sign out</span>
+                        <span>Logout</span>
                       </div>
                     </button>
                   </div>
@@ -394,7 +394,7 @@ const Dashboard = () => {
 
         {/* Main content */}
         <main className="flex-1 overflow-y-auto bg-neutral-50">
-          <div className="p-6">
+          <div className="p-1">
             <DashboardContent section={section} />
           </div>
         </main>

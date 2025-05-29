@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Trash2, Search, RefreshCw } from "lucide-react";
+import { Trash2, Search, RefreshCw, EyeOff, Eye } from "lucide-react";
 
 const InquiryData = () => {
   const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+    const [expandedMessageId, setExpandedMessageId] = useState(null);
   const api = import.meta.env.VITE_API_URL;
 
   // ✅ Fetch inquiries
-  const fetchInquiries = async () => {
+  const   fetchInquiries = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${api}/inquiry/all`, { withCredentials: true });
-      setInquiries(res.data || []);
+      const res = await axios.get(`${api}/inquiry/getall`);
+      console.log(res)
+      setInquiries(res.data.inquiries || []);
     } catch (err) {
       console.error("Failed to fetch inquiries:", err);
     } finally {
@@ -83,18 +85,20 @@ const InquiryData = () => {
     [inquiry.name, inquiry.email, inquiry.phone, inquiry.message]
       .some(field => field?.toLowerCase().includes(searchTerm.toLowerCase()))
   );
-
+  const toggleMessage = (id) => {
+    setExpandedMessageId(expandedMessageId === id ? null : id);
+  };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-amber-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-amber-900 mb-2">Customer Inquiries</h1>
-          <p className="text-amber-700">Manage customer messages and requests</p>
+        <div className="mb-4">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Customer Inquiries</h1>
+          {/* <p className="text-amber-700">Manage customer messages and requests</p> */}
         </div>
 
         {/* Search & Refresh */}
-        <div className="mb-6 flex gap-4 items-center">
+        {/* <div className="mb-6 flex gap-4 items-center">
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-500" size={20} />
             <input
@@ -112,67 +116,74 @@ const InquiryData = () => {
             <RefreshCw size={18} />
             Refresh
           </button>
-        </div>
+        </div> */}
 
         {/* Table */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-amber-100">
-          <table className="w-full">
-            <thead className="bg-gradient-to-r from-amber-400 to-yellow-500">
-              <tr>
-                <th className="px-6 py-4 text-left text-white font-semibold">Name</th>
-                <th className="px-6 py-4 text-left text-white font-semibold">Email</th>
-                <th className="px-6 py-4 text-left text-white font-semibold">Phone</th>
-                <th className="px-6 py-4 text-left text-white font-semibold">Message</th>
-                <th className="px-6 py-4 text-left text-white font-semibold">Date</th>
-                <th className="px-6 py-4 text-center text-white font-semibold">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {loading ? (
-                <tr>
-                  <td colSpan="6" className="px-6 py-12 text-center">
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin h-8 w-8 border-4 border-amber-500 border-t-transparent rounded-full"></div>
-                      <span className="ml-3 text-amber-700">Loading...</span>
-                    </div>
-                  </td>
-                </tr>
-              ) : filteredInquiries.length === 0 ? (
-                <tr>
-                  <td colSpan="6" className="px-6 py-12 text-center text-amber-600">
-                    {searchTerm ? "No inquiries found matching your search." : "No inquiries available."}
-                  </td>
-                </tr>
-              ) : (
-                filteredInquiries.map((inquiry, index) => (
-                  <tr key={inquiry._id} className={`border-b border-amber-100 hover:bg-amber-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-amber-25'}`}>
-                    <td className="px-6 py-4 font-medium text-amber-900">{inquiry.name}</td>
-                    <td className="px-6 py-4 text-amber-700">{inquiry.email}</td>
-                    <td className="px-6 py-4 text-amber-700">{inquiry.phone}</td>
-                    <td className="px-6 py-4 max-w-xs">
-                      <div className="text-amber-800 truncate" title={inquiry.message}>
-                        {inquiry.message}
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-amber-700">{formatDate(inquiry.createdAt)}</td>
-                    <td className="px-6 py-4 text-center">
-                      <button
-                        onClick={() => handleDelete(inquiry._id)}
-                        className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-full transition-colors"
-                        title="Delete inquiry"
-                      >
-                        <Trash2 size={18} />
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+        <div className="bg-white overflow-auto  shadow-lg border-2 border-gray-100">
+             <table className="w-full border-collapse border border-gray-300">
+                     <thead>
+                       <tr className="bg-gray100 bg-amber-600 text-white">
+                         <th className="border border-gray-300 px-4 py-2 text-left">S.No</th>
+                         <th className="border border-gray-300 px-4 py-2 text-left">Name</th>
+                         <th className="border border-gray-300 px-4 py-2 text-left">Email</th>
+                         <th className="border border-gray-300 px-4 py-2 text-left">Phone</th>
+                         <th className="border border-gray-300 px-4 py-2 text-left">Message</th>
+                         <th className="border border-gray-300 px-4 py-2 text-left">Date</th>
+                         <th className="border border-gray-300 px-4 py-2 text-center">Action</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       {filteredInquiries.map((inquiry, index) => (
+                         <tr key={inquiry._id} className="hover:bg-gray-50">
+                           <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
+                           <td className="border border-gray-300 px-4 py-2 font-medium">{inquiry.name}</td>
+                           <td className="border border-gray-300 px-4 py-2">{inquiry.email}</td>
+                           <td className="border border-gray-300 px-4 py-2">{inquiry.phone}</td>
+                           <td className="border border-gray-300 px-4 py-2 max-w-xs">
+                             <div className="relative">
+                               <div className={`${expandedMessageId === inquiry._id ? '' : 'line-clamp-2'}`}>
+                                 {inquiry.message}
+                               </div>
+                               {inquiry.message.length > 100 && (
+                                 <button
+                                   className="mt-1 text-amber-600 hover:text-amber-800 text-sm flex items-center gap-1"
+                                   onClick={() => toggleMessage(inquiry._id)}
+                                 >
+                                   {expandedMessageId === inquiry._id ? (
+                                     <>
+                                       <EyeOff size={14} />
+                                       Show less
+                                     </>
+                                   ) : (
+                                     <>
+                                       <Eye size={14} />
+                                       Read more
+                                     </>
+                                   )}
+                                 </button>
+                               )}
+                             </div>
+                           </td>
+                           <td className="border border-gray-300 px-4 py-2">
+                             {inquiry.createdAt ? formatDate(inquiry.createdAt) : 'N/A'}
+                           </td>
+                           <td className="border border-gray-300 px-4 py-2 text-center">
+                             <button
+                               onClick={() => handleDelete(inquiry._id)}
+                               className="text-red-600 hover:text-red-800 p-1 rounded hover:bg-red-50"
+                               title="Delete inquiry"
+                             >
+                               <Trash2 size={16} />
+                             </button>
+                           </td>
+                         </tr>
+                       ))}
+                     </tbody>
+                   </table>
         </div>
 
         {/* Footer */}
-        <div className="mt-6 text-center text-amber-600">
+        <div className="mt-4  text-amber-600">
           Showing {filteredInquiries.length} inquiries
         </div>
       </div>
