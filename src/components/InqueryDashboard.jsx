@@ -86,8 +86,11 @@ const InquiryDashboard = () => {
   return (
     <div className="p-6">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold mb-2">Inquiry Management</h1>
-        <p className="text-gray-600">Total Inquiries: {inquiries.length}</p>
+        <div className="bg-white p-2">
+
+        <h1 className="text-2xl border border-gray-200 bg-gray-50 px-4 py-1 font-bold ">Inquiry Management</h1>
+        </div>
+        {/* <p className="text-gray-600">Total Inquiries: {inquiries.length}</p> */}
       </div>
 
       {inquiries.length === 0 ? (
@@ -99,12 +102,12 @@ const InquiryDashboard = () => {
           <table className="w-full border-collapse border border-gray-300">
             <thead>
               <tr className="bg-gray100 bg-amber-600 text-white">
-                <th className="border border-gray-300 px-4 py-2 text-left">S.No</th>
-                <th className="border border-gray-300 px-4 py-2 text-left">Name</th>
-                <th className="border border-gray-300 px-4 py-2 text-left">Email</th>
-                <th className="border border-gray-300 px-4 py-2 text-left">Phone</th>
-                <th className="border border-gray-300 px-4 py-2 text-left">Message</th>
-                <th className="border border-gray-300 px-4 py-2 text-left">Date</th>
+                <th className="border border-gray-300 px-4 py-2 text-center">S.No</th>
+                <th className="border border-gray-300 px-4 py-2 text-center">Name</th>
+                <th className="border border-gray-300 px-4 py-2 text-center">Email</th>
+                <th className="border border-gray-300 px-4 py-2 text-center">Phone</th>
+                <th className="border border-gray-300 px-4 py-2 text-center">Message</th>
+                <th className="border border-gray-300 px-4 py-2 text-center">Date</th>
                 <th className="border border-gray-300 px-4 py-2 text-center">Action</th>
               </tr>
             </thead>

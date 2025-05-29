@@ -94,33 +94,33 @@ const BlogDashboard = () => {
 
   return (
     <div className="p-6">
-      <div className="mb-6">
-        <div className="flex justify-between items-center mb-4">
+      <div className="mb-6 rounded p-2 bg-white">
+        <div className="flex justify-between items-center  bg-gray-50 border border-gray-100 p-2">
           <div>
             <h1 className="text-2xl font-bold mb-2">Blog Management</h1>
-            <p className="text-gray-600">Total Blogs: {blogs.length}</p>
+            {/* <p className="text-gray-600">Total Blogs: {blogs.length}</p> */}
           </div>
           <button
             onClick={handleAdd}
-            className="bg-amber-500 text-white px-4 py-2 rounded hover:bg-amber-600 flex items-center gap-2"
+            className="bg-amber-500 text-white font-semibold px-4 py-2 rounded hover:bg-amber-600 flex items-center gap-2"
           >
-            <FiPlus size={16} />
+            <FiPlus size={24} />
             Add New Blog
           </button>
         </div>
 
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <div className="relative max-w-md">
             <FiSearch className="absolute left-3 top-3 text-gray-400" size={16} />
             <input
               type="text"
-              className="border border-gray-300 rounded px-4 py-2 pl-10 w-full"
+              className="border border-gray-200 rounded px-4 py-2 pl-10 w-full"
               placeholder="Search blogs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-        </div>
+        </div> */}
       </div>
 
       {filteredBlogs.length === 0 ? (
@@ -129,16 +129,16 @@ const BlogDashboard = () => {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse border border-gray-300">
+          <table className="w-full border-collapse border border-gray-200">
             <thead>
-              <tr className="bg-gray-100">
-                <th className="border border-gray-300 px-4 py-2 text-left">S.No</th>
-                <th className="border border-gray-300 px-4 py-2 text-left">Image</th>
-                <th className="border border-gray-300 px-4 py-2 text-left">Title</th>
-                <th className="border border-gray-300 px-4 py-2 text-left">Category</th>
-                <th className="border border-gray-300 px-4 py-2 text-left">Description</th>
-                <th className="border border-gray-300 px-4 py-2 text-left">Author</th>
-                <th className="border border-gray-300 px-4 py-2 text-center">Actions</th>
+              <tr className="bg-gray-100 text-center text-white">
+                <th className="border border-gray-200 px-4 py-2 bg-amber-600">S.No</th>
+                <th className="border border-gray-200 px-4 py-2 bg-amber-600">Image</th>
+                <th className="border border-gray-200 px-4 py-2 bg-amber-600">Title</th>
+                <th className="border border-gray-200 px-4 py-2 bg-amber-600">Category</th>
+                <th className="border border-gray-200 px-4 py-2 bg-amber-600">Description</th>
+                <th className="border border-gray-200 px-4 py-2 bg-amber-600">Author</th>
+                <th className="border border-gray-200 px-4 py-2 text-center bg-amber-600">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -147,25 +147,25 @@ const BlogDashboard = () => {
                 .reverse()
                 .map((blog, index) => (
                   <tr key={blog._id} className="hover:bg-gray-50">
-                    <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
-                    <td className="border border-gray-300 px-4 py-2">
+                    <td className="border border-gray-200 px-4 py-2">{index + 1}</td>
+                    <td className="border border-gray-200 px-4 py-2">
                       <img
                         src={blog.imageUrl}
                         alt={blog.title}
                         className="w-16 h-12 object-cover rounded"
                       />
                     </td>
-                    <td className="border border-gray-300 px-4 py-2 font-medium max-w-xs">
+                    <td className="border border-gray-200 px-4 py-2 font-medium max-w-xs">
                       <div className="truncate" title={blog.title}>
                         {blog.title}
                       </div>
                     </td>
-                    <td className="border border-gray-300 px-4 py-2">
+                    <td className="border border-gray-200 px-4 py-2">
                       <span className="bg-amber-100 text-amber-800 px-2 py-1 rounded text-sm">
                         {blog.category}
                       </span>
                     </td>
-                    <td className="border border-gray-300 px-4 py-2 max-w-md">
+                    <td className="border border-gray-200 px-4 py-2 max-w-md">
                       <div className="relative">
                         <div className={`${expandedDescId === blog._id ? '' : 'line-clamp-3'}`}>
                           {removeHTMLTags(blog.description)}
@@ -190,8 +190,8 @@ const BlogDashboard = () => {
                         )}
                       </div>
                     </td>
-                    <td className="border border-gray-300 px-4 py-2">{blog.postedBy}</td>
-                    <td className="border border-gray-300 px-4 py-2 text-center">
+                    <td className="border border-gray-200 px-4 py-2">{blog.postedBy}</td>
+                    <td className="border border-gray-200 px-4 py-2 text-center">
                       <div className="flex justify-center gap-2">
                         <button
                           onClick={() => handleEdit(blog)}

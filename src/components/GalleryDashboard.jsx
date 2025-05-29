@@ -3,6 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { validateImage } from "./imagevalidation";
 import { Edit2, Plus, Trash2 } from "lucide-react";
+import { FiPlus } from "react-icons/fi";
 
 const GalleryModal = ({ isOpen, onClose, onSubmit, formData, setFormData, uploadImage, loading }) => {
     if (!isOpen) return null;
@@ -67,7 +68,7 @@ const GalleryModal = ({ isOpen, onClose, onSubmit, formData, setFormData, upload
                 <div className="relative">
                   <input 
                     type="file" 
-                    className="w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all duration-300 outline-none file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100 disabled:opacity-50 disabled:cursor-not-allowed" 
+                    className="w-full px-4 py-3 border-2 border-dashed border-gray-200 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all duration-300 outline-none file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100 disabled:opacity-50 disabled:cursor-not-allowed" 
                     onChange={uploadImage} 
                     disabled={formData.imageUrl && formData.imageUrl !== ""} 
                     accept="image/*"
@@ -227,30 +228,27 @@ const GalleryDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-amber-50">
+    <div className="p-6 bg-gradient-to-br from-gray-50 via-white to-amber-50">
+
+    
+    <div className="min-h-screen  ">
       {/* Header Section */}
-      <div className="bg-white shadow-lg border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
-            <div>
-              <h1 className="text-3xl font-bold  ">
-                Gallery Dashboard
-              </h1>
-              <p className="text-gray-600 mt-2">Manage your beautiful image collection</p>
-            </div>
-            <button 
-              onClick={() => setShowModal(true)} 
-              className="bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 text-white px-4 py-2 rounded-md font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
-            >
-              <span><Plus/></span>
-              <span>Add New Image</span>
-            </button>
+    <div className="flex justify-between items-center  bg-white border border-gray-100 p-2">
+          <div>
+            <h1 className="text-2xl font-bold mb-2">Gallery Management</h1>
+            {/* <p className="text-gray-600">Total Blogs: {blogs.length}</p> */}
           </div>
+          <button
+                onClick={() => setShowModal(true)} 
+            className="bg-amber-500 text-white font-semibold px-4 py-2 rounded hover:bg-amber-600 flex items-center gap-2"
+          >
+            <FiPlus size={24} />
+            Add New Images
+          </button>
         </div>
-      </div>
 
       {/* Gallery Grid Section */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto  py-8">
         {gallery?.length === 0 ? (
           <div className="text-center py-20">
             <div className="text-8xl mb-4">📷</div>
@@ -316,6 +314,7 @@ const GalleryDashboard = () => {
         uploadImage={uploadImage}
         loading={loading}
       />
+    </div>
     </div>
   );
 };

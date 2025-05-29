@@ -118,7 +118,7 @@ function AdminLogin() {
               </div>
             </div>
             
-            <h2 className="text-2xl font-bold text-center text-amber-800 mb-8">Administrator Login</h2>
+            {/* <h2 className="text-2xl font-bold text-center text-amber-800 mb-8">Administrator Login</h2> */}
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>

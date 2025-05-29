@@ -332,9 +332,6 @@ const Dashboard = () => {
             </div>
             
             <div className="flex items-center space-x-4">
-              <button className="p-1.5 rounded-full text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100 focus:outline-none">
-                <Bell size={20} />
-              </button>
               
               <div className="relative">
                 <button
@@ -348,7 +345,7 @@ const Dashboard = () => {
                   />
                   <div className="hidden md:block text-left">
                     <span className="block text-sm font-medium text-neutral-900">{user}</span>
-                    <span className="block text-xs text-neutral-500">Administrator</span>
+                    <span className="block text-xs text-neutral-500">Admin</span>
                   </div>
                   <ChevronDown size={16} className="hidden md:block text-neutral-500" />
                 </button>
@@ -358,27 +355,10 @@ const Dashboard = () => {
                     <div className="px-4 py-2 text-sm text-neutral-500 border-b">
                       Signed in as <span className="font-medium text-neutral-900">{user}</span>
                     </div>
-                    <a href="#" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100">
-                      <div className="flex items-center">
-                        <User size={16} className="mr-2" />
-                        <span>Your Profile</span>
-                      </div>
-                    </a>
-                    <a href="#" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100">
-                      <div className="flex items-center">
-                        <Settings size={16} className="mr-2" />
-                        <span>Settings</span>
-                      </div>
-                    </a>
-                    <a href="#" className="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100">
-                      <div className="flex items-center">
-                        <HelpCircle size={16} className="mr-2" />
-                        <span>Help & Support</span>
-                      </div>
-                    </a>
+                   
                     <button 
                       onClick={logout}
-                      className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-neutral-100 border-t"
+                      className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-neutral-100 "
                     >
                       <div className="flex items-center">
                         <LogOut size={16} className="mr-2" />

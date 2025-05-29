@@ -92,8 +92,8 @@ const InquiryData = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-4">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Customer Inquiries</h1>
+        <div className="mb-4 bg-white shadow-sm p-1 ">
+          <h1 className="text-2xl font-bold bg-gray-50 text-gray-900 px-4 py-1 m-1 border border-gray-200">Recent Customer Inquiries</h1>
           {/* <p className="text-amber-700">Manage customer messages and requests</p> */}
         </div>
 
@@ -122,13 +122,13 @@ const InquiryData = () => {
         <div className="bg-white overflow-auto  shadow-lg border-2 border-gray-100">
              <table className="w-full border-collapse border border-gray-300">
                      <thead>
-                       <tr className="bg-gray100 bg-amber-600 text-white">
-                         <th className="border border-gray-300 px-4 py-2 text-left">S.No</th>
-                         <th className="border border-gray-300 px-4 py-2 text-left">Name</th>
-                         <th className="border border-gray-300 px-4 py-2 text-left">Email</th>
-                         <th className="border border-gray-300 px-4 py-2 text-left">Phone</th>
-                         <th className="border border-gray-300 px-4 py-2 text-left">Message</th>
-                         <th className="border border-gray-300 px-4 py-2 text-left">Date</th>
+                       <tr className="bg-gray100 bg-amber-600 text-white text-center">
+                         <th className="border border-gray-300 px-4 py-2 ">S.No</th>
+                         <th className="border border-gray-300 px-4 py-2 ">Name</th>
+                         <th className="border border-gray-300 px-4 py-2 ">Email</th>
+                         <th className="border border-gray-300 px-4 py-2 ">Phone</th>
+                         <th className="border border-gray-300 px-4 py-2 ">Message</th>
+                         <th className="border border-gray-300 px-4 py-2 ">Date</th>
                          <th className="border border-gray-300 px-4 py-2 text-center">Action</th>
                        </tr>
                      </thead>
