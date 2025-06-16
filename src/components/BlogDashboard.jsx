@@ -102,7 +102,7 @@ const BlogDashboard = () => {
           </div>
           <button
             onClick={handleAdd}
-            className="bg-amber-500 text-white font-semibold px-4 py-2 rounded hover:bg-amber-600 flex items-center gap-2"
+            className="bg-[#ebb661] text-white font-semibold px-4 py-2 rounded hover:bg-[#ebb661] flex items-center gap-2"
           >
             <FiPlus size={24} />
             Add New Blog
@@ -129,16 +129,16 @@ const BlogDashboard = () => {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse border border-gray-200">
+          <table className=" w-[75rem] border-collapse border border-gray-200">
             <thead>
               <tr className="bg-gray-100 text-center text-white">
-                <th className="border border-gray-200 px-4 py-2 bg-amber-600">S.No</th>
-                <th className="border border-gray-200 px-4 py-2 bg-amber-600">Image</th>
-                <th className="border border-gray-200 px-4 py-2 bg-amber-600">Title</th>
-                <th className="border border-gray-200 px-4 py-2 bg-amber-600">Category</th>
-                <th className="border border-gray-200 px-4 py-2 bg-amber-600">Description</th>
-                <th className="border border-gray-200 px-4 py-2 bg-amber-600">Author</th>
-                <th className="border border-gray-200 px-4 py-2 text-center bg-amber-600">Actions</th>
+                <th className="border border-gray-200 px-4 py-2 bg-[#ebb661]">S.No</th>
+                <th className="border border-gray-200 px-4 py-2 bg-[#ebb661]">Image</th>
+                <th className="border border-gray-200 px-4 py-2 bg-[#ebb661]">Title</th>
+                <th className="border border-gray-200 px-4 py-2 bg-[#ebb661]">Category</th>
+                <th className="border border-gray-200 px-4 py-2 bg-[#ebb661]">Description</th>
+                <th className="border border-gray-200 px-4 py-2 bg-[#ebb661]">Posted by</th>
+                <th className="border border-gray-200 px-4 py-2 text-center bg-[#ebb661]">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -172,7 +172,7 @@ const BlogDashboard = () => {
                         </div>
                         {removeHTMLTags(blog.description).length > 150 && (
                           <button
-                            className="mt-1 text-amber-600 hover:text-amber-800 text-sm flex items-center gap-1"
+                            className="mt-1 text-[#ebb661] hover:text-amber-800 text-sm flex items-center gap-1"
                             onClick={() => toggleDescription(blog._id)}
                           >
                             {expandedDescId === blog._id ? (
@@ -195,7 +195,7 @@ const BlogDashboard = () => {
                       <div className="flex justify-center gap-2">
                         <button
                           onClick={() => handleEdit(blog)}
-                          className="text-amber-600 hover:text-amber-800 p-1 rounded hover:bg-amber-50"
+                          className="text-[#ebb661] hover:text-amber-800 p-1 rounded hover:bg-amber-50"
                           title="Edit"
                         >
                           <FiEdit size={16} />

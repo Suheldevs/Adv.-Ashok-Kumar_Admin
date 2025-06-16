@@ -18,7 +18,7 @@ const GalleryModal = ({ isOpen, onClose, onSubmit, formData, setFormData, upload
           onClick={(e) => e.stopPropagation()}
         >
           {/* Modal Header */}
-          <div className="bg-gradient-to-r from-amber-600 to-amber-600 text-white p-6 rounded-t-2xl">
+          <div className="bg-gradient-to-r from-[#ebb661] to-[#ebb661] text-white p-6 rounded-t-2xl">
             <h2 className="text-2xl font-bold">
               {formData._id ? "Update Image" : "Add New Image"}
             </h2>
@@ -48,14 +48,14 @@ const GalleryModal = ({ isOpen, onClose, onSubmit, formData, setFormData, upload
   
             {/* Form Fields */}
             <div className="space-y-4">
-              <div>
+              <div className='hidden'>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Posted By
                 </label>
                 <input
                   type="text"
                   placeholder="Enter your name..."
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all duration-300 outline-none"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#ebb661] focus:ring-2 focus:ring-amber-200 transition-all duration-300 outline-none"
                   value={formData.postedBy}
                   onChange={(e) => setFormData({ ...formData, postedBy: e.target.value })}
                 />
@@ -68,7 +68,7 @@ const GalleryModal = ({ isOpen, onClose, onSubmit, formData, setFormData, upload
                 <div className="relative">
                   <input 
                     type="file" 
-                    className="w-full px-4 py-3 border-2 border-dashed border-gray-200 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-200 transition-all duration-300 outline-none file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100 disabled:opacity-50 disabled:cursor-not-allowed" 
+                    className="w-full px-4 py-3 border-2 border-dashed border-gray-200 rounded-xl focus:border-[#ebb661] focus:ring-2 focus:ring-amber-200 transition-all duration-300 outline-none file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100 disabled:opacity-50 disabled:cursor-not-allowed" 
                     onChange={uploadImage} 
                     disabled={formData.imageUrl && formData.imageUrl !== ""} 
                     accept="image/*"
@@ -82,7 +82,7 @@ const GalleryModal = ({ isOpen, onClose, onSubmit, formData, setFormData, upload
               <button 
                 disabled={loading} 
                 onClick={onSubmit} 
-                className={`${loading ? "cursor-not-allowed opacity-75" : "cursor-pointer hover:shadow-lg"} bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-[1.02] disabled:transform-none flex items-center justify-center space-x-2`}
+                className={`${loading ? "cursor-not-allowed opacity-75" : "cursor-pointer hover:shadow-lg"} bg-gradient-to-r from-[#ebb661] to-[#ebb661] hover:from-amber-700 hover:to-amber-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-[1.02] disabled:transform-none flex items-center justify-center space-x-2`}
               >
                 {loading && (
                   <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
@@ -107,7 +107,7 @@ const GalleryModal = ({ isOpen, onClose, onSubmit, formData, setFormData, upload
 
 const GalleryDashboard = () => {
   const [gallery, setGallery] = useState([]);
-  const [formData, setFormData] = useState({ postedBy: "", imageUrl: "" });
+  const [formData, setFormData] = useState({ postedBy: "Redt Judge Ashok Kumar", imageUrl: "" });
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -165,8 +165,8 @@ const GalleryDashboard = () => {
   };
 
   const handleSubmit = async () => {
-    if (!formData.postedBy || !formData.imageUrl) {
-      Swal.fire("Warning", "Both Posted By and Image are required!", "warning");
+    if (!formData.imageUrl) {
+      Swal.fire("Warning", "Image is required!", "warning");
       return;
     }
   
@@ -240,7 +240,7 @@ const GalleryDashboard = () => {
           </div>
           <button
                 onClick={() => setShowModal(true)} 
-            className="bg-amber-500 text-white font-semibold px-4 py-2 rounded hover:bg-amber-600 flex items-center gap-2"
+            className="bg-[#ebb661] text-white font-semibold px-4 py-2 rounded hover:bg-[#ebb661] flex items-center gap-2"
           >
             <FiPlus size={24} />
             Add New Images
@@ -275,7 +275,7 @@ const GalleryDashboard = () => {
                     <button 
                       disabled={loading} 
                       onClick={() => handleUpdate(item)} 
-                      className="bg-white/90 backdrop-blur-sm hover:bg-white text-amber-600 px-3 py-2 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-1 text-sm"
+                      className="bg-white/90 backdrop-blur-sm hover:bg-white text-[#ebb661] px-3 py-2 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-1 text-sm"
                     >
                       <span><Edit2/></span>
                     </button>

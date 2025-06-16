@@ -60,7 +60,7 @@ function AdminLogin() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-amber-100 relative overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-amber-600 opacity-5 transform rotate-45">
+        <div className="absolute top-0 left-0 w-full h-full bg-[#ebb661] opacity-5 transform rotate-45">
           <div className="grid grid-cols-12 grid-rows-12 gap-4 h-full">
             {Array(144).fill().map((_, i) => (
               <div key={i} className="bg-white rounded-full"></div>
@@ -77,11 +77,11 @@ function AdminLogin() {
         {/* Left side - Brand info */}
         {/* <div className="hidden md:flex flex-col items-center md:items-start text-center md:text-left p-8 md:w-1/2">
           <h1 className="text-4xl font-bold text-amber-800 mb-4">Admin Portal</h1>
-          <p className="text-lg text-amber-600 mb-8">Securely access your administration dashboard</p>
+          <p className="text-lg text-[#ebb661] mb-8">Securely access your administration dashboard</p>
           <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-lg">
             <div className="flex items-center space-x-4 mb-4">
               <div className="bg-amber-100 p-2 rounded-full">
-                <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-6 h-6 text-[#ebb661]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                 </svg>
               </div>
@@ -92,7 +92,7 @@ function AdminLogin() {
             </div>
             <div className="flex items-center space-x-4">
               <div className="bg-amber-100 p-2 rounded-full">
-                <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-6 h-6 text-[#ebb661]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
@@ -120,14 +120,14 @@ function AdminLogin() {
             
             {/* <h2 className="text-2xl font-bold text-center text-amber-800 mb-8">Administrator Login</h2> */}
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-amber-900 mb-2" htmlFor="email">
+                <label className="block  font-medium text-amber-900 " htmlFor="email">
                   Email Address
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg className="h-5 w-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-5 w-5 text-[#ebb661]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                     </svg>
                   </div>
@@ -145,12 +145,12 @@ function AdminLogin() {
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-amber-900 mb-2" htmlFor="password">
+                <label className="block font-medium text-amber-900 mb-2" htmlFor="password">
                   Password
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg className="h-5 w-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-5 w-5 text-[#ebb661]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                     </svg>
                   </div>
@@ -173,20 +173,20 @@ function AdminLogin() {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-amber-300 rounded"
+                    className="h-4 w-4 text-[#ebb661] focus:ring-amber-500 border-amber-300 rounded"
                   />
                   <label htmlFor="remember-me" className="ml-2 block text-amber-800">
                     Remember me
                   </label>
                 </div>
-                <div className="text-amber-600 hover:text-amber-800 cursor-pointer transition-colors">
+                <div className="text-[#ebb661] hover:text-amber-800 cursor-pointer transition-colors">
                   Forgot password?
                 </div>
               </div> */}
               
               <button
                 type="submit"
-                className={`w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-colors ${loading ? 'opacity-80 cursor-not-allowed' : ''}`}
+                className={`w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-white bg-[#ebb661] hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-colors ${loading ? 'opacity-80 cursor-not-allowed' : ''}`}
                 disabled={loading}
               >
                 {loading ? (
@@ -209,7 +209,7 @@ function AdminLogin() {
             </form>
           </div>
           
-          <p className="mt-6 text-center text-sm text-amber-600">
+          <p className="mt-6 text-center text-sm text-[#ebb661]">
             Need help accessing your account? 
             <a href="tel:9336969289" className="ml-1 font-medium text-amber-800 hover:text-amber-900">
               Contact Support

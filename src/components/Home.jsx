@@ -42,7 +42,7 @@ const Home = () => {
         <div className="">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
   {/* Total Inquiries Card */}
-  <div className="relative bg-white border-b-4 border-amber-600 shadow-xl rounded-xl transition-transform hover:scale-105 overflow-hidden">
+  <div className="relative bg-white border-b-4 border-[#ebb661] shadow-xl rounded-xl transition-transform hover:scale-105 overflow-hidden">
     <div
       className="absolute inset-0"
       style={{
@@ -55,7 +55,7 @@ const Home = () => {
     <div className="relative flex  justify-between px-6 py-4">
       {/* Left side - Icon and Title */}
       <div className="fle items-center space-y-2">
-        <div className="p-3 inline-block bg-amber-100 border border-amber-600 shadow-lg rounded-xl ">
+        <div className="p-3 inline-block bg-amber-100 border border-[#ebb661] shadow-lg rounded-xl ">
           <MailQuestion size={32} className="text-whit" />
         </div>
         <div>
@@ -75,7 +75,7 @@ const Home = () => {
   </div>
 
   {/* Total Gallery Images Card */}
-  <div className="relative bg-white border-b-4 border-amber-600 shadow-xl rounded-xl transition-transform hover:scale-105 overflow-hidden">
+  <div className="relative bg-white border-b-4 border-[#ebb661] shadow-xl rounded-xl transition-transform hover:scale-105 overflow-hidden">
     <div
       className="absolute inset-0"
       style={{
@@ -88,7 +88,7 @@ const Home = () => {
     <div className="relative flex  justify-between px-6 py-4">
       {/* Left side - Icon and Title */}
       <div className="flx items-center space-y-3">
-        <div className="p-3 inline-block bg-amber-100 border border-amber-600 shadow-lg rounded-xl flex-shrink-0">
+        <div className="p-3 inline-block bg-amber-100 border border-[#ebb661] shadow-lg rounded-xl flex-shrink-0">
           <FolderOpenDot size={32} className="text-whit" />
         </div>
         <div>
@@ -108,7 +108,7 @@ const Home = () => {
   </div>
 
   {/* Total Blogs Card */}
-  <div className="relative bg-white border-b-4 border-amber-600 shadow-xl rounded-xl transition-transform hover:scale-105 overflow-hidden">
+  <div className="relative bg-white border-b-4 border-[#ebb661] shadow-xl rounded-xl transition-transform hover:scale-105 overflow-hidden">
     <div
       className="absolute inset-0"
       style={{
@@ -121,7 +121,7 @@ const Home = () => {
     <div className="relative flex justify-between px-6 py-4">
       {/* Left side - Icon and Title */}
       <div className="flx items-center space-y-3">
-        <div className="p-3 inline-block bg-amber-100 border border-amber-600 shadow-lg rounded-xl flex-shrink-0">
+        <div className="p-3 inline-block bg-amber-100 border border-[#ebb661] shadow-lg rounded-xl flex-shrink-0">
           <Rss size={32} className="text-whit" />
         </div>
         <div>

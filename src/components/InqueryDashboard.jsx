@@ -99,10 +99,10 @@ const InquiryDashboard = () => {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse border border-gray-300">
+          <table className="w w-[70rem] border-collapse border border-gray-300">
             <thead>
-              <tr className="bg-gray100 bg-amber-600 text-white">
-                <th className="border border-gray-300 px-4 py-2 text-center">S.No</th>
+              <tr className="bg-gray100 bg-[#ebb661] text-white">
+                <th className="border  border-gray-300 px-4 py-2 text-center">S.No</th>
                 <th className="border border-gray-300 px-4 py-2 text-center">Name</th>
                 <th className="border border-gray-300 px-4 py-2 text-center">Email</th>
                 <th className="border border-gray-300 px-4 py-2 text-center">Phone</th>
@@ -115,10 +115,10 @@ const InquiryDashboard = () => {
               {inquiries.slice(0, loadCount).map((inquiry, index) => (
                 <tr key={inquiry._id} className="hover:bg-gray-50">
                   <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
-                  <td className="border border-gray-300 px-4 py-2 font-medium">{inquiry.name}</td>
+                  <td className="border w-44  border-gray-300 px-4 py-2 font-medium">{inquiry.name}</td>
                   <td className="border border-gray-300 px-4 py-2">{inquiry.email}</td>
-                  <td className="border border-gray-300 px-4 py-2">{inquiry.phone}</td>
-                  <td className="border border-gray-300 px-4 py-2 max-w-xs">
+                  <td className="border w-44 border-gray-300 px-4 py-2">{inquiry.phone}</td>
+                  <td className="border w-52 border-gray-300 px-4 py-2 max-w-xs">
                     <div className="relative">
                       <div className={`${expandedMessageId === inquiry._id ? '' : 'line-clamp-2'}`}>
                         {inquiry.message}
@@ -143,7 +143,7 @@ const InquiryDashboard = () => {
                       )}
                     </div>
                   </td>
-                  <td className="border border-gray-300 px-4 py-2">
+                  <td className="border w-44 border-gray-300 px-4 py-2">
                     {inquiry.createdAt ? formatDate(inquiry.createdAt) : 'N/A'}
                   </td>
                   <td className="border border-gray-300 px-4 py-2 text-center">

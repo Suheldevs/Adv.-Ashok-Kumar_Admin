@@ -140,7 +140,7 @@ const BlogModal = ({ blogData, onClose }) => {
                   disabled={loading}
                   className="w-full p-3 border-2 border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-900"
                 />
-                {loading && <p className="text-amber-500 text-sm">Uploading...</p>}
+                {loading && <p className="text-[#ebb661] text-sm">Uploading...</p>}
                 
                 {formData.imageUrl && (
                   <div className="mt-2">
@@ -195,7 +195,7 @@ const BlogModal = ({ blogData, onClose }) => {
             <button
               type="submit"
               disabled={loading}
-              className={`bg-amber-600 text-white py-2 px-6 rounded-lg hover:bg-amber-700 ${loading ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
+              className={`bg-[#ebb661] text-white py-2 px-6 rounded-lg hover:bg-amber-700 ${loading ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
             >
               {blogData ? "Update" : "Save"} Blog
             </button>

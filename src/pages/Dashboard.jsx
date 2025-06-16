@@ -28,11 +28,12 @@ import {
   BarChart2
 } from "lucide-react";
 import ApplicationDashboard from "../components/ApplicationDashboard";
+import CopyRight from "../components/CopyRight";
 
 const SidebarItem = ({ name, icon, active, onClick, collapsed }) => {
   return (
     <div
-      className={`flex items-center ${active ? 'bg-amber-600 text-white' : 'text-neutral-300 hover:bg-neutral-700'} rounded-lg cursor-pointer transition-all duration-200 mb-0.5 px-2 py-2 group`}
+      className={`flex items-center ${active ? 'bg-[#ebb661] text-white' : 'text-neutral-300 hover:bg-neutral-700'} rounded-lg cursor-pointer transition-all duration-200 mb-0.5 px-2 py-2 group`}
       onClick={() => onClick(name)}
     >
       <div className={`${active ? 'text-white' : 'text-neutral-400 group-hover:text-white'} mr-3 transition-colors`}>{icon}</div>
@@ -132,7 +133,9 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex font-sans h-screen bg-neutral-100">
+    <div className="flex h-screen bg-neutral-100">
+
+
       {/* Overlay for mobile menu */}
       {mobileMenuOpen && (
         <div 
@@ -145,14 +148,17 @@ const Dashboard = () => {
       <div className={`hidden md:block bg-neutral-900 transition-all duration-300 ease-in-out ${sidebarCollapsed ? 'w-16' : 'w-64'}`}>
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="flex items-center justify-between h-16 px-4 border-b border-neutral-800">
+          <div className="flex items-center justify-between h-16 px-4 border-b border-neutral-800 bg-white">
             {!sidebarCollapsed && (
-              <a href="https://www.codecrafter.co.in/" target="_blank" rel="noopener noreferrer">
-                <img src={cclogo} alt="CodeCrafter Logo" className="h-12" />
-              </a>
+              // <a href="https://www.codecrafter.co.in/" target="_blank" rel="noopener noreferrer">
+              //   <img src={cclogo} alt="CodeCrafter Logo" className="h-12" />
+              // </a>
+               <div className="">
+              <h1 className=" font-semibold text-neutral-800">Retd. Judge Ashok Kumar</h1>
+            </div>
             )}
             <button 
-              className="p-1.5 rounded-lg bg-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-700 transition-colors"
+              className="p-1.5 rounded-lg bg-neutral-100 text-neutral-800 hover:text-gray-700 hover:bg-neutral-200 transition-colors"
               onClick={toggleSidebar}
             >
               <Menu size={18} />
@@ -206,7 +212,7 @@ const Dashboard = () => {
           </div>
           
           {/* Bottom section */}
-          {!sidebarCollapsed && (
+          {/* {!sidebarCollapsed && (
             <div className="py-2 px-4 border-t border-neutral-800">
               <button 
                 onClick={logout}
@@ -216,7 +222,7 @@ const Dashboard = () => {
                 <span>Logout</span>
               </button>
             </div>
-          )}
+          )} */}
         </div>
       </div>
       
@@ -314,10 +320,15 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 relative flex flex-col overflow-hidden">
+
+        <div className="absolute bottom-0 left-0 w-full ">
+
+      <CopyRight/>
+</div>
         {/* Header */}
-        <header className="bg-white shadow-sm ">
-          <div className="flex items-center justify-between px-4 py-3">
+        <header className="bg-neutral-950 shadow-sm ">
+          <div className="flex items-center justify-end px-4 py-3">
             <div className="flex items-center md:hidden">
               <button
                 className="p-2 rounded-md text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100 focus:outline-none"
@@ -327,9 +338,7 @@ const Dashboard = () => {
               </button>
             </div>
             
-            <div className="flex-1 md:ml-4">
-              <h1 className="text-xl font-semibold text-neutral-800">Retd. Judge Ashok Kumar</h1>
-            </div>
+           
             
             <div className="flex items-center space-x-4">
               
@@ -344,10 +353,10 @@ const Dashboard = () => {
                     className="w-8 h-8 rounded-full border border-neutral-200"
                   />
                   <div className="hidden md:block text-left">
-                    <span className="block text-sm font-medium text-neutral-900">{user}</span>
-                    <span className="block text-xs text-neutral-500">Admin</span>
+                    <span className="block text-sm font-medium text-white">{user}</span>
+                    <span className="block text-xs text-neutral-100">Admin</span>
                   </div>
-                  <ChevronDown size={16} className="hidden md:block text-neutral-500" />
+                  <ChevronDown size={16} className="hidden md:block text-neutral-100" />
                 </button>
                 
                 {userMenuOpen && (
@@ -373,7 +382,7 @@ const Dashboard = () => {
         </header>
 
         {/* Main content */}
-        <main className="flex-1 overflow-y-auto bg-neutral-50">
+        <main className="flex-1 overflow-y-auto ">
           <div className="p-1">
             <DashboardContent section={section} />
           </div>

@@ -120,9 +120,9 @@ const InquiryData = () => {
 
         {/* Table */}
         <div className="bg-white overflow-auto  shadow-lg border-2 border-gray-100">
-             <table className="w-full border-collapse border border-gray-300">
+             <table className="w-[75rem] border-collapse border border-gray-300">
                      <thead>
-                       <tr className="bg-gray100 bg-amber-600 text-white text-center">
+                       <tr className="bg-gray100 bg-[#ebb661] text-white text-center">
                          <th className="border border-gray-300 px-4 py-2 ">S.No</th>
                          <th className="border border-gray-300 px-4 py-2 ">Name</th>
                          <th className="border border-gray-300 px-4 py-2 ">Email</th>
