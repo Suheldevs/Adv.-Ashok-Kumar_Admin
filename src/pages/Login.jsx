@@ -70,8 +70,8 @@ function AdminLogin() {
       </div>
 
       {/* Decorative circle elements */}
-      <div className="absolute -top-20 -left-20 w-64 h-64 bg-amber-200 rounded-full opacity-20"></div>
-      <div className="absolute -bottom-16 -right-16 w-80 h-80 bg-amber-300 rounded-full opacity-20"></div>
+      <div className="absolute -top-20 -left-20 w-64 h-64 bg-amber-50 rounded-full opacity-20"></div>
+      <div className="absolute -bottom-16 -right-16 w-80 h-80 bg-amber-100 rounded-full opacity-20"></div>
       
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-center w-full max-w-4xl p-6">
         {/* Left side - Brand info */}

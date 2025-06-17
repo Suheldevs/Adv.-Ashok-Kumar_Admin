@@ -89,7 +89,7 @@ const InquiryData = () => {
     setExpandedMessageId(expandedMessageId === id ? null : id);
   };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-4 bg-white shadow-sm p-1 ">

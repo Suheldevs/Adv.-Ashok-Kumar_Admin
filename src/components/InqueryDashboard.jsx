@@ -16,7 +16,7 @@ const InquiryDashboard = () => {
     const fetchInquiries = async () => {
       try {
         const response = await axios.get(`${api}/inquiry/getall`);
-        setInquiries(response.data.inquiries.reverse());
+        setInquiries(response.data.inquiries);
       } catch (err) {
         setError("Error fetching data");
       } finally {
@@ -99,9 +99,9 @@ const InquiryDashboard = () => {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w w-[70rem] border-collapse border border-gray-300">
+          <table className="w w-[75rem] border-collapse border border-gray-300">
             <thead>
-              <tr className="bg-gray100 bg-[#ebb661] text-white">
+              <tr className=" bg-[#ebb661] text-white">
                 <th className="border  border-gray-300 px-4 py-2 text-center">S.No</th>
                 <th className="border border-gray-300 px-4 py-2 text-center">Name</th>
                 <th className="border border-gray-300 px-4 py-2 text-center">Email</th>

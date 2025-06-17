@@ -322,10 +322,6 @@ const Dashboard = () => {
       {/* Main Content */}
       <div className="flex-1 relative flex flex-col overflow-hidden">
 
-        <div className="absolute bottom-0 left-0 w-full ">
-
-      <CopyRight/>
-</div>
         {/* Header */}
         <header className="bg-neutral-950 shadow-sm ">
           <div className="flex items-center justify-end px-4 py-3">
@@ -387,6 +383,11 @@ const Dashboard = () => {
             <DashboardContent section={section} />
           </div>
         </main>
+        
+        <div className=" border-t border-gray-200 w-full ">
+
+      <CopyRight/>
+</div>
       </div>
     </div>
   );
